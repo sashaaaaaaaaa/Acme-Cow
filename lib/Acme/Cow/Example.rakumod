@@ -1,6 +1,6 @@
 use v6.*;
 
-use Acme::Cow:ver:<0.0.5>:auth<zef:lizmat>;
+use Acme::Cow:ver<0.0.5>:auth<zef:lizmat>;
 
 unit class Acme::Cow::Example:ver<0.0.5>:auth<zef:lizmat> is Acme::Cow;
 
