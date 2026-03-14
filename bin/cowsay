@@ -49,7 +49,7 @@ $tongue .= substr(0, 2);
 my $cow = $file ?? variant_cow($file) !! Acme::Cow.new;
 construct_face($cow);
 
-$progname.ends-with("think") ?? $cow.think(@text) !! $cow.say(@text);
+$progname.ends-with("think") ?? $cow.think(@text) !! $cow.speak(@text);
 $cow.fill(False) if $nofill;
 $cow.wrap($wrap) if $wrap;
 $cow.print;

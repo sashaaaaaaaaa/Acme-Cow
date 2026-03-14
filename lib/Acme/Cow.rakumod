@@ -25,8 +25,8 @@ class Acme::Cow:ver<0.0.5>:auth<zef:lizmat> {
     multi method think()    { $!mode = 'think' }
     multi method think(*@_) { $!mode = 'think'; self.text(@_) }
 
-    multi method say()    { $!mode = 'say' }
-    multi method say(*@_) { $!mode = 'say'; self.text(@_) }
+    multi method speak()    { $!mode = 'say' }
+    multi method speak(*@_) { $!mode = 'say'; self.text(@_) }
 
     multi method text()    { @!text }
     multi method text(@_)  { @!text = @_ }
@@ -61,6 +61,13 @@ class Acme::Cow:ver<0.0.5>:auth<zef:lizmat> {
         $text.subst(/ '{$' (\w+) '}' /, -> $/ { %mapper{$0} }, :g)
     }
 }
+
+sub alias(Str:D $method, *@aka) {
+    my $r := Acme::Cow.^find_method($method);
+    Acme::Cow.^add_method($_, $r) for @aka;
+}
+
+BEGIN alias("speak", "say");
 
 =begin pod
 
