@@ -3,7 +3,7 @@
 use Acme::Cow;
 
 my $VERSION  = "4.0";
-my $progname = $*PROGRAM-NAME;
+my $progname = $*PROGRAM-NAME.IO.basename.IO.extension('');
 my $cowpath  = %*ENV<COWPATH> || ".";
 
 # preprocess arguments to handle -?
